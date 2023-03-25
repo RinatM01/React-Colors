@@ -1,5 +1,5 @@
-import Palette from '@/Palette';
-import seedColors from '@/seedColors';
+import Palette from '../Components/Palette/Palette';
+import seedColors from '../Components/Palette/seedColors';
 
 export default function Home() {
 	return (
