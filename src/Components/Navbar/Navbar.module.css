@@ -25,3 +25,8 @@
 	margin: 0px 10px;
 	display: inline-block;
 }
+
+.SelectContainer {
+	margin-left: auto;
+	margin-right: 1rem;
+}
