@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ColorBox from '../ColorBox/ColorBox';
 import styles from './Palette.module.css';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import Navbar from '../Navbar/Navbar';
 
 export default class Palette extends Component {
 	constructor(props) {
@@ -23,14 +22,7 @@ export default class Palette extends Component {
 		));
 		return (
 			<div className={styles.Palette}>
-				<Slider
-					defaultValue={light}
-					min={100}
-					max={900}
-					onChange={this.changeLight}
-					step={100}
-				/>
-				{/* Navbar goes here */}
+				<Navbar light={light} changeLight={this.changeLight} />
 				<div className={styles.PaletteColors}>{colorBoxes}</div>
 				{/* Footer here */}
 			</div>
