@@ -64,7 +64,7 @@ export default class Navbar extends Component {
 						<span>Format Changed to {format.toUpperCase()}</span>
 					}
 					action={[
-						<IconButton onClick={this.closeSnack}>
+						<IconButton key={getTime()} onClick={this.closeSnack}>
 							<CloseIcon />
 						</IconButton>
 					]}
