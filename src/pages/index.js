@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/styles';
 
 const styles1 = {
 	root: {
-		backgroundColor: 'blue',
+		backgroundColor: '#8787ce',
 		height: '100vh',
 		display: 'flex',
 		justifyContent: 'center',
