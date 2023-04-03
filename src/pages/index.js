@@ -1,7 +1,6 @@
 import Palette from './palette/[palette]';
-import seedColors from './palette/seedColors';
+import seedColors from '../Components/seedColors';
 import { generatePalette } from '@/colorHelper';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styles from './index.module.css';
 import Link from 'next/link';
 import MiniPalette from '@/Components/MiniPalette/MiniPalette';

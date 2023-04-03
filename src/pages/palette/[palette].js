@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ColorBox from '../../Components/ColorBox/ColorBox';
 import styles from './Palette.module.css';
 import Navbar from '../../Components/Navbar/Navbar';
-import seedColors from './seedColors';
+import seedColors from '../../Components/seedColors';
 import { useRouter } from 'next/router';
 import { generatePalette } from '@/colorHelper';
 

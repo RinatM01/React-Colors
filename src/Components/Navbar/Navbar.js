@@ -6,6 +6,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { uuid } from 'uuidv4';
+import Link from 'next/link';
 
 export default class Navbar extends Component {
 	constructor(props) {
@@ -34,7 +36,7 @@ export default class Navbar extends Component {
 		return (
 			<header className={styles.Navbar}>
 				<div className={styles.Logo}>
-					<a href="#">reactcolors</a>
+					<Link href="/">reactcolors</Link>
 				</div>
 				<div className={styles.SliderCont}>
 					<span>Level: {light}</span>
@@ -64,7 +66,7 @@ export default class Navbar extends Component {
 						<span>Format Changed to {format.toUpperCase()}</span>
 					}
 					action={[
-						<IconButton key={getTime()} onClick={this.closeSnack}>
+						<IconButton key={uuid()} onClick={this.closeSnack}>
 							<CloseIcon />
 						</IconButton>
 					]}
