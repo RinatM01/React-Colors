@@ -31,25 +31,28 @@ export default class Navbar extends Component {
 	}
 
 	render() {
-		const { light, changeLight, changeFormat } = this.props;
+		const { light, changeLight, changeFormat, showSlider } = this.props;
 		const { format, open } = this.state;
 		return (
 			<header className={styles.Navbar}>
 				<div className={styles.Logo}>
 					<Link href="/">reactcolors</Link>
 				</div>
-				<div className={styles.SliderCont}>
-					<span>Level: {light}</span>
-					<div className={styles.Slider}>
-						<Slider
-							defaultValue={light}
-							min={100}
-							max={900}
-							onChange={changeLight}
-							step={100}
-						/>
+				{showSlider && (
+					<div className={styles.SliderCont}>
+						<span>Level: {light}</span>
+						<div className={styles.Slider}>
+							<Slider
+								defaultValue={light}
+								min={100}
+								max={900}
+								onChange={changeLight}
+								step={100}
+							/>
+						</div>
 					</div>
-				</div>
+				)}
+
 				<div className={styles.SelectContainer}>
 					<Select value={format} onChange={this.handleChange}>
 						<MenuItem value="hex">HEX - #ffffff</MenuItem>

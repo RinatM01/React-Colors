@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styles from './ColorBox.module.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Link from 'next/link';
+import { color } from '@mui/system';
 
 export default class ColorBox extends Component {
 	constructor(props) {
@@ -18,7 +20,7 @@ export default class ColorBox extends Component {
 		});
 	}
 	render() {
-		const { name, background } = this.props;
+		const { paletteId, colorId, name, background, showMore } = this.props;
 		const { copied } = this.state;
 
 		return (
@@ -44,7 +46,19 @@ export default class ColorBox extends Component {
 						</div>
 						<button className={styles.CopyButton}>Copy</button>
 					</div>
-					<span className={styles.More}>More</span>
+					{showMore && (
+						<Link
+							href={{
+								pathname: `/palette/${paletteId}/${colorId}`,
+								query: {
+									colorId: colorId
+								}
+							}}
+							onClick={(e) => e.stopPropagation()}
+						>
+							<span className={styles.More}>More</span>
+						</Link>
+					)}
 				</div>
 			</CopyToClipboard>
 		);
