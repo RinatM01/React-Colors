@@ -4,8 +4,10 @@ import seedColors from '../../../Components/seedColors';
 import { generatePalette } from '@/colorHelper';
 import ColorBox from '@/Components/ColorBox/ColorBox';
 import styles from './Palette.module.css';
+import stylesBox from '@/Components/ColorBox/ColorBox.module.css';
 import Navbar from '@/Components/Navbar/Navbar';
 import Footer from '@/Components/Footer/Footer';
+import Link from 'next/link';
 
 export default function SingleColorPalette() {
 	const router = useRouter();
@@ -43,7 +45,17 @@ export default function SingleColorPalette() {
 	return (
 		<div className={styles.Palette}>
 			<Navbar changeFormat={changeFormat} showSlider={false} />
-			<div className={styles.PaletteColors}>{boxes}</div>
+			<div className={styles.PaletteColors}>
+				{boxes}
+				<div className={`${stylesBox.ColorBox} ${stylesBox.goBack}`}>
+					<Link
+						href={`/palette/${currPalette.id}`}
+						className={stylesBox.CopyButton}
+					>
+						Go Back
+					</Link>
+				</div>
+			</div>
 			<Footer
 				paletteName={currPalette.paletteName}
 				emoji={currPalette.emoji}

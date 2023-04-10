@@ -25,7 +25,12 @@ export default class ColorBox extends Component {
 
 		return (
 			<CopyToClipboard text={background} onCopy={this.changeCopyState}>
-				<div style={{ background }} className={styles.ColorBox}>
+				<div
+					style={{ background }}
+					className={`${styles.ColorBox} ${!showMore
+						? styles.singleMode
+						: ''}`}
+				>
 					<div
 						style={{ background }}
 						className={`${styles.CopyOverlay} ${styles[

@@ -7,6 +7,11 @@
 	cursor: pointer;
 	margin-bottom: -4px;
 }
+
+.singleMode {
+	height: 50%;
+}
+
 .CopyButton {
 	width: 100px;
 	height: 30px;
@@ -25,6 +30,15 @@
 	line-height: 30px;
 	color: white;
 	opacity: 0;
+}
+
+.goBack .CopyButton {
+	opacity: 1;
+}
+
+.goBack {
+	background-color: black;
+	height: 50%;
 }
 
 .ColorBox:hover .CopyButton {
