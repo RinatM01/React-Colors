@@ -14,17 +14,11 @@ export default function SingleColorPalette() {
 	// const { paletteId, colorId } = router.query;
 	const [ format, setFormat ] = useState('hex');
 	const [ shades, setShades ] = useState();
-	const [ paletteId, setPaletteId ] = useState();
+	const [ palette, setPalette ] = useState();
 
 	const changeFormat = (format) => {
 		setFormat(format);
 	};
-
-	// const currPalette = generatePalette(
-	// 	seedColors.find((paletty) => {
-	// 		return paletty.id === paletteId;
-	// 	})
-	// );
 
 	useEffect(
 		() => {
@@ -38,7 +32,7 @@ export default function SingleColorPalette() {
 						generatePalette(currPalette),
 						router.query.singleColor
 					);
-					setPaletteId(currPalette.id);
+					setPalette(currPalette);
 					setShades(shady);
 				}
 			};
@@ -57,6 +51,7 @@ export default function SingleColorPalette() {
 		}
 		return shades.slice(1);
 	};
+
 	let boxes;
 	if (shades) {
 		boxes = shades.map((col) => (
@@ -69,6 +64,10 @@ export default function SingleColorPalette() {
 		));
 	}
 
+	if (!palette) {
+		return <div>lol</div>;
+	}
+
 	return (
 		<div className={styles.Palette}>
 			<Navbar changeFormat={changeFormat} showSlider={false} />
@@ -76,17 +75,14 @@ export default function SingleColorPalette() {
 				{boxes}
 				<div className={`${stylesBox.ColorBox} ${stylesBox.goBack}`}>
 					<Link
-						href={`/palette/${paletteId}`}
+						href={`/palette/${palette.id}`}
 						className={stylesBox.CopyButton}
 					>
 						Go Back
 					</Link>
 				</div>
 			</div>
-			{/* <Footer
-				paletteName={currPalette.paletteName}
-				emoji={currPalette.emoji}
-			/> */}
+			<Footer paletteName={palette.paletteName} emoji={palette.emoji} />
 		</div>
 	);
 }
