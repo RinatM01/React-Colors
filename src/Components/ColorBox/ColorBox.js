@@ -54,12 +54,8 @@ export default class ColorBox extends Component {
 					{showMore && (
 						<Link
 							href={{
-								pathname: `/palette/${paletteId}/${colorId}`,
-								query: {
-									colorId: colorId
-								}
+								pathname: `/palette/${paletteId}/${colorId}`
 							}}
-							onClick={(e) => e.stopPropagation()}
 						>
 							<span className={styles.More}>More</span>
 						</Link>

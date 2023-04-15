@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import { uuid } from 'uuidv4';
+import { v4 as uuid_v4 } from 'uuid';
 import Link from 'next/link';
 
 export default class Navbar extends Component {
@@ -69,7 +69,7 @@ export default class Navbar extends Component {
 						<span>Format Changed to {format.toUpperCase()}</span>
 					}
 					action={[
-						<IconButton key={uuid()} onClick={this.closeSnack}>
+						<IconButton key={uuid_v4()} onClick={this.closeSnack}>
 							<CloseIcon />
 						</IconButton>
 					]}

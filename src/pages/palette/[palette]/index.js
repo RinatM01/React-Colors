@@ -17,7 +17,7 @@ export default function Palette() {
 		() => {
 			const findPalette = async () => {
 				const paletteId = await router.query.palette;
-				const currPalette = await seedColors.find(function(palette) {
+				const currPalette = await seedColors.find((palette) => {
 					return palette.id === paletteId;
 				});
 				if (currPalette) {
