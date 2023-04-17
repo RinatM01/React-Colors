@@ -13,6 +13,7 @@ const styles = {
 		}
 	},
 	colors: {
+		height: '160px',
 		backgroundColor: 'grey',
 		borderRadius: '5px',
 		overflow: 'hidden',

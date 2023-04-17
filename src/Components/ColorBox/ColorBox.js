@@ -3,6 +3,7 @@ import styles from './ColorBox.module.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
 import { color } from '@mui/system';
+import chroma from 'chroma-js';
 
 export default class ColorBox extends Component {
 	constructor(props) {
@@ -22,6 +23,8 @@ export default class ColorBox extends Component {
 	render() {
 		const { paletteId, colorId, name, background, showMore } = this.props;
 		const { copied } = this.state;
+		const isDark = chroma(background).luminance() <= 0.09;
+		const isLight = chroma(background).luminance() >= 0.73;
 
 		return (
 			<CopyToClipboard text={background} onCopy={this.changeCopyState}>
@@ -29,27 +32,43 @@ export default class ColorBox extends Component {
 					style={{ background }}
 					className={`${styles.ColorBox} ${!showMore
 						? styles.singleMode
-						: ''}`}
+						: undefined}`}
 				>
 					<div
 						style={{ background }}
 						className={`${styles.CopyOverlay} ${styles[
-							copied && 'show'
+							copied ? 'show' : undefined
 						]}`}
 					/>
 					<div
 						className={`${styles.CopyMsg} ${styles[
-							copied && 'show'
+							copied ? 'show' : undefined
 						]}`}
 					>
-						<h1>Copied!</h1>
-						<p>{background}</p>
+						<h1 className={isLight ? styles.MoreDark : undefined}>
+							Copied!
+						</h1>
+						<p className={isLight ? styles.MoreDark : undefined}>
+							{background}
+						</p>
 					</div>
 					<div className={styles.CopyContainer}>
 						<div className={styles.BoxContent}>
-							<span>{name}</span>
+							<span
+								className={`${isDark
+									? styles.TextLight
+									: undefined}`}
+							>
+								{name}
+							</span>
 						</div>
-						<button className={styles.CopyButton}>Copy</button>
+						<button
+							className={`${styles.CopyButton} ${isLight
+								? styles.MoreDark
+								: undefined}`}
+						>
+							Copy
+						</button>
 					</div>
 					{showMore && (
 						<Link
@@ -58,7 +77,13 @@ export default class ColorBox extends Component {
 							}}
 							onClick={(e) => e.stopPropagation()}
 						>
-							<span className={styles.More}>More</span>
+							<span
+								className={`${styles.More} ${isLight
+									? styles.MoreDark
+									: undefined}`}
+							>
+								More
+							</span>
 						</Link>
 					)}
 				</div>

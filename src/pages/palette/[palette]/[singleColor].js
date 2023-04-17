@@ -8,14 +8,15 @@ import stylesBox from '@/Components/ColorBox/ColorBox.module.css';
 import Navbar from '@/Components/Navbar/Navbar';
 import Footer from '@/Components/Footer/Footer';
 import Link from 'next/link';
+import { useContext } from 'react';
+import { PaletteContext } from '@/context/context';
 
 export default function SingleColorPalette() {
 	const router = useRouter();
-	// const { paletteId, colorId } = router.query;
 	const [ format, setFormat ] = useState('hex');
 	const [ shades, setShades ] = useState();
 	const [ palette, setPalette ] = useState();
-
+	const { palettes } = useContext(PaletteContext);
 	const changeFormat = (format) => {
 		setFormat(format);
 	};
@@ -24,7 +25,7 @@ export default function SingleColorPalette() {
 		() => {
 			const findPalette = async () => {
 				const paletteId = await router.query.palette;
-				const currPalette = await seedColors.find((palette) => {
+				const currPalette = await palettes.find((palette) => {
 					return palette.id === paletteId;
 				});
 				if (currPalette) {
@@ -38,7 +39,7 @@ export default function SingleColorPalette() {
 			};
 			findPalette();
 		},
-		[ router.query.palette, router.query.singleColor ]
+		[ palettes, router.query.palette, router.query.singleColor ]
 	);
 
 	const generateShades = (pal, colId) => {

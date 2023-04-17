@@ -1,0 +1,17 @@
+.NavBtns {
+	margin-right: 1rem;
+}
+
+.NavBtn {
+	margin: 0 0.5rem;
+}
+
+.ToolBar {
+	display: flexbox;
+	justify-content: space-between;
+}
+
+.hamb {
+	display: flex;
+	align-items: center;
+}
