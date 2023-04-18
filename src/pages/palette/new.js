@@ -108,8 +108,14 @@ export default function NewPaletteForm() {
 
 	const addRandom = () => {
 		const allColors = palettes.map((p) => p.colors).flat();
-		const rando = Math.floor(Math.random() * allColors.length);
-		setSavedColors([ ...savedColors, allColors[rando] ]);
+		let rando = Math.floor(Math.random() * allColors.length);
+		let randColor = allColors[rando];
+		console.log(randColor);
+		while (savedColors.some((color) => color.name === randColor.name)) {
+			rando = Math.floor(Math.random() * allColors.length);
+			randColor = allColors[rando];
+		}
+		setSavedColors([ ...savedColors, randColor ]);
 	};
 
 	return (

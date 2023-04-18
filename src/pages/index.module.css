@@ -2,10 +2,6 @@
 	height: 100%;
 }
 
-.Linky {
-	display: block;
-}
-
 .root {
 	background-color: #8787ce;
 	height: 100vh;
@@ -49,4 +45,17 @@
 	display: grid;
 	grid-template-columns: repeat(3, 30%);
 	grid-gap: 5%;
+}
+
+@media (max-width: 991.98px) {
+	.palettes {
+		grid-template-columns: repeat(2, 45%);
+		grid-gap: 10%;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.palettes {
+		grid-template-columns: repeat(1, 100%);
+	}
 }

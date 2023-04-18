@@ -1,44 +1,58 @@
 import React from 'react';
 import classes from './MiniPalette.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useContext } from 'react';
-import { PaletteContext } from '@/context/context';
+import { motion } from 'framer-motion';
 
 function MiniPalette(props) {
-	const { colors, paletteName, emoji, id } = props;
-	const { palettes, setPalettes } = useContext(PaletteContext);
-
-	const handleDelete = (e) => {
-		e.preventDefault();
-		setPalettes(palettes.filter((pal) => pal.id !== id));
-	};
-
+	const { toggleDelete, colors, paletteName, emoji, id } = props;
 	return (
-		<div className={classes.root}>
-			<DeleteIcon
-				style={{
-					width: '45px',
-					height: '45px'
-				}}
-				onClick={handleDelete}
-				className={classes.deleteIcon}
-			/>
+		<motion.div
+			key={id}
+			initial="initalState"
+			animate="animateState"
+			exit="exitState"
+			transition={{ duration: 0.5 }}
+			variants={{
+				initalState: {
+					opacity: 0
+				},
+				animateState: {
+					opacity: 1
+				},
+				exitState: {
+					opacity: 0
+				}
+			}}
+		>
+			<div className={classes.root}>
+				<DeleteIcon
+					style={{
+						width: '45px',
+						height: '45px'
+					}}
+					onClick={(e) => {
+						e.preventDefault();
+						toggleDelete(id);
+					}}
+					className={classes.deleteIcon}
+				/>
 
-			<div className={classes.colors}>
-				{colors.map((col) => (
-					<div
-						key={col.name}
-						style={{ backgroundColor: col.color }}
-						className={classes.boxy}
-					/>
-				))}
+				<div className={classes.colors}>
+					{colors.map((col) => (
+						<div
+							key={col.name}
+							style={{ backgroundColor: col.color }}
+							className={classes.boxy}
+						/>
+					))}
+				</div>
+				<h5 className={classes.title}>
+					{paletteName}
+					<span className={classes.emoji}>{emoji}</span>
+				</h5>
 			</div>
-			<h5 className={classes.title}>
-				{paletteName}
-				<span className={classes.emoji}>{emoji}</span>
-			</h5>
-		</div>
+		</motion.div>
 	);
 }
 
-export default MiniPalette;
+export default React.memo(MiniPalette);

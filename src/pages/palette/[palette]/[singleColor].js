@@ -65,25 +65,30 @@ export default function SingleColorPalette() {
 		));
 	}
 
-	if (!palette) {
-		return <div>lol</div>;
-	}
-
-	return (
-		<div className={styles.Palette}>
-			<Navbar changeFormat={changeFormat} showSlider={false} />
-			<div className={styles.PaletteColors}>
-				{boxes}
-				<div className={`${stylesBox.ColorBox} ${stylesBox.goBack}`}>
-					<Link
-						href={`/palette/${palette.id}`}
-						className={stylesBox.CopyButton}
+	if (palette) {
+		return (
+			<div className={styles.Palette}>
+				<Navbar changeFormat={changeFormat} showSlider={false} />
+				<div className={styles.PaletteColors}>
+					{boxes}
+					<div
+						className={`${stylesBox.ColorBox} ${stylesBox.goBack}`}
 					>
-						Go Back
-					</Link>
+						<Link
+							href={`/palette/${palette.id}`}
+							className={stylesBox.CopyButton}
+						>
+							Go Back
+						</Link>
+					</div>
 				</div>
+				<Footer
+					paletteName={palette.paletteName}
+					emoji={palette.emoji}
+				/>
 			</div>
-			<Footer paletteName={palette.paletteName} emoji={palette.emoji} />
-		</div>
-	);
+		);
+	} else {
+		return undefined;
+	}
 }
