@@ -3,6 +3,7 @@ import Link from 'next/link';
 import MiniPalette from '@/Components/MiniPalette/MiniPalette';
 import { useContext } from 'react';
 import { PaletteContext } from '@/context/context';
+import { Button } from '@mui/material';
 
 function Home() {
 	const { palettes } = useContext(PaletteContext);
@@ -12,7 +13,15 @@ function Home() {
 			<div className={styles.container}>
 				<nav className={styles.nav}>
 					<h1>React Colors</h1>
-					<Link href="palette/new">Create Palette</Link>
+					<Link style={{ color: 'white' }} href="palette/new">
+						<Button
+							style={{ fontSize: '1rem' }}
+							variant="contained"
+							color="primary"
+						>
+							Create Palette
+						</Button>
+					</Link>
 				</nav>
 				<div className={styles.palettes}>
 					{palettes.map((color) => (
