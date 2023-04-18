@@ -105,6 +105,43 @@
 	position: absolute;
 }
 
+@media (max-width: 991.98px) {
+	.ColorBox {
+		width: 25%;
+		height: 20%;
+	}
+
+	.singleMode {
+		height: 50%;
+		width: 20%;
+	}
+
+	.goBack {
+		width: 20%;
+		height: 50%;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.ColorBox {
+		width: 100%;
+		height: 5%;
+	}
+
+	.singleMode {
+		height: 10%;
+		width: 100%;
+	}
+
+	.goBack {
+		height: 10%;
+	}
+
+	.CopyOverlay {
+		height: 100vh;
+	}
+}
+
 .CopyMsg {
 	position: fixed;
 	top: 0;

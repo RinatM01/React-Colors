@@ -40,7 +40,7 @@ export default function FormNav({ open, handleDrawerOpen, handleSubmit }) {
 	return (
 		<div>
 			<CssBaseline />
-			<AppBar color="default" position="fixed" open={open}>
+			<AppBar elevation={0} color="default" position="fixed" open={open}>
 				<Toolbar className={styles.ToolBar}>
 					<div className={styles.hamb}>
 						<IconButton

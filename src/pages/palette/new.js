@@ -10,7 +10,6 @@ import DraggableList from '@/Components/DraggableList';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { PaletteContext } from '@/context/context';
 import { useRouter } from 'next/router';
-import { arrayMoveImmutable } from 'array-move';
 import FormNav from '@/Components/FormNav/FormNav';
 import ColorPicker from '@/Components/ColorPicker/ColorPicker';
 
@@ -100,7 +99,6 @@ export default function NewPaletteForm() {
 			colors: savedColors
 		};
 		setPalettes([ ...palettes, newPalette ]);
-		console.log(palettes);
 		router.push('/');
 	};
 
@@ -115,7 +113,7 @@ export default function NewPaletteForm() {
 	};
 
 	return (
-		<Box sx={{ display: 'flex' }}>
+		<Box sx={{ display: 'flex', boxShadow: '0' }}>
 			<FormNav
 				open={open}
 				handleDrawerOpen={handleDrawerOpen}
@@ -155,8 +153,8 @@ export default function NewPaletteForm() {
 				<DrawerHeader />
 				<DraggableList
 					savedColors={savedColors}
-					removeColor={removeColor}
 					setSavedColors={setSavedColors}
+					removeColor={removeColor}
 				/>
 			</Main>
 		</Box>

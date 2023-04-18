@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styles from './ColorBox.module.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'next/link';
-import { color } from '@mui/system';
 import chroma from 'chroma-js';
 
 export default class ColorBox extends Component {
